@@ -2,6 +2,8 @@
 
 A Vue.js composable that dynamically reacts to every HTML element's resize and trims provided string in the middle until it fits to element or until provided minimum length is reached.
 
+https://github.com/user-attachments/assets/5296e059-ed9a-47a9-9a82-cabb6b1fe031
+
 ## Table of Contents
 
 1. [Rationale](#rationale)
