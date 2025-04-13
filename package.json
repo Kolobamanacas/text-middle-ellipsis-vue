@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/Kolobamanacas/text-middle-ellipsis-vue/issues"
   },
+  "files": ["dist"],
   "devDependencies": {
     "@typescript-eslint/parser": "8.29.1",
     "eslint": "9.24.0",
