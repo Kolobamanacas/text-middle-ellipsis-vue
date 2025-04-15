@@ -2,7 +2,9 @@
 
 A Vue.js composable that dynamically reacts to every HTML element's resize and trims provided string in the middle until it fits to element or until provided minimum length is reached.
 
-https://github.com/user-attachments/assets/5296e059-ed9a-47a9-9a82-cabb6b1fe031
+- [Video Demo](https://github.com/user-attachments/assets/5296e059-ed9a-47a9-9a82-cabb6b1fe031)
+- [StackBlitz Demo](https://stackblitz.com/edit/bolt-vue-ecuosg5z?file=src%2FApp.vue)
+
 
 ## Table of Contents
 
@@ -41,7 +43,7 @@ Import and call `useTextMiddleEllipsis()` in your component, it will return `for
 ```typescript
 // <script setup lang="ts">
 import { useTextMiddleEllipsis } from '@text-middle-ellipsis/vue';
-import { type ShallowRef, defineProps, useTemplateRef } from 'vue';
+import { defineProps, useTemplateRef } from 'vue';
 
 const props = defineProps<{ originalText: string }>();
 const textArticle = useTemplateRef('textArticle'); // For Vue prior to v3.5, use `const textArticle = ref(null)`.

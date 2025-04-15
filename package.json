@@ -11,13 +11,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Kolobamanacas/text-middle-ellipsis-vue.git"
+    "url": "git+ssh://git@github.com/Kolobamanacas/text-middle-ellipsis-vue.git"
   },
   "homepage": "https://github.com/Kolobamanacas/text-middle-ellipsis-vue#readme",
   "bugs": {
     "url": "https://github.com/Kolobamanacas/text-middle-ellipsis-vue/issues"
   },
-  "files": ["dist"],
+  "keywords": [
+    "vue",
+    "composable",
+    "hook",
+    "ellipsis",
+    "truncate",
+    "text",
+    "string"
+  ],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@typescript-eslint/parser": "8.29.1",
     "eslint": "9.24.0",
@@ -30,7 +41,7 @@
     "typescript": "5.8.3",
     "typescript-eslint": "8.29.1"
   },
-  "dependencies": {
+  "peerDependencies": {
     "vue": ">=3.5.0"
   }
 }
