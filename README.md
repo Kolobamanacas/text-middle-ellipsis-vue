@@ -74,7 +74,7 @@ const { formattedText } = useTextMiddleEllipsis({ htmlElementRef: textArticle, t
 1. During component's `onMounted()` [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) and [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) are set to observe HTML element provided as a parameter.
 2. Every time viewport size changes the ResizeObserver performs increasing/decreasing step, depending on whether viewport become smaller and formatted text doesn't fit again or viewport become larger and there is space to show more characters.
 3. Every increasing/decreasing step triggers MutationObserver, which performs another increasing/decreasing step.
-4. Decreasing steps stop when formatted text fits its container or when minimum possible size is reached, which is when either left or right part's length is eqal or less than provided trim step.
+4. Decreasing steps stop when formatted text fits its container or when minimum possible size is reached, which is when either left or right part's length is equal or less than provided trim step.
 5. Increasing steps stop when formatted text is restored back to original text or when text is restored to the point it doesn't fit to its container again. In case of latter, one final decreasing step is performed and process is completed until the next viewport size change.
 
 ## Bugs, Questions, Feature Requests, Improvements
