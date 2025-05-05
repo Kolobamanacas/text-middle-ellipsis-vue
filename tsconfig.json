@@ -15,6 +15,7 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": true,
 
     "baseUrl": "./",
     "outDir": "./dist",

@@ -58,15 +58,6 @@ export default tseslint.config(
           'newlines-between': 'always',
         }
       ],
-      // TODO: Delete .eslintrc file after this bug is fixed: https://github.com/import-js/eslint-plugin-import/issues/3079.
-      'import/no-unused-modules': [
-        'error',
-        {
-          missingExports: true,
-          src: ['**/*.ts'],
-          unusedExports: false,
-        }
-      ]
     },
   },
 );

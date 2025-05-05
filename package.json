@@ -1,6 +1,6 @@
 {
   "name": "@text-middle-ellipsis/vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Adaptively fits overflowing string of text to its parent HTML Element container by replacin middle of a string with any ellipsis character of your choice.",
   "license": "Unlicense",
   "type": "module",
