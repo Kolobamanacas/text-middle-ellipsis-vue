@@ -1,1 +1,1 @@
-export * from '@/coomposable/use-text-middle-ellipsis';
+export * from '@/composable/use-text-middle-ellipsis';

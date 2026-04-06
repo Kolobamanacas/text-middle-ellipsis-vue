@@ -1,13 +1,13 @@
 {
   "name": "@text-middle-ellipsis/vue",
-  "version": "0.0.2",
+  "version": "0.0.3-canary.2",
   "description": "Adaptively fits overflowing string of text to its parent HTML Element container by replacin middle of a string with any ellipsis character of your choice.",
   "license": "Unlicense",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && tsc-alias"
+    "build": "tsc && tsc-alias -f"
   },
   "repository": {
     "type": "git",
@@ -30,17 +30,17 @@
     "dist"
   ],
   "devDependencies": {
-    "@typescript-eslint/parser": "8.32.0",
-    "eslint": "9.26.0",
-    "eslint-config-prettier": "10.1.3",
-    "eslint-import-resolver-typescript": "4.3.4",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-prettier": "5.4.0",
-    "jiti": "2.4.2",
-    "prettier": "3.5.3",
+    "@typescript-eslint/parser": "8.58.0",
+    "eslint": "9.39.4",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-prettier": "5.5.5",
+    "jiti": "2.6.1",
+    "prettier": "3.8.1",
     "tsc-alias": "1.8.16",
-    "typescript": "5.8.3",
-    "typescript-eslint": "8.32.0"
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.58.0"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"
