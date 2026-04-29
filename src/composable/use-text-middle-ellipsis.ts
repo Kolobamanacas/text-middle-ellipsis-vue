@@ -1,4 +1,4 @@
-import { type ComputedRef, type Ref, type ShallowRef, computed, onMounted, onUnmounted, ref } from 'vue';
+import { type ComputedRef, type Ref, type ShallowRef, computed, onMounted, onUnmounted, ref, watch } from 'vue';
 
 export type TextMiddleEllipsisParameters = {
   htmlElementRef: Readonly<ShallowRef<HTMLElement | null>>;
@@ -70,6 +70,10 @@ export const useTextMiddleEllipsis = ({
     rightText = originalText.value.slice(-trimStep - rightText.length);
     formattedText.value = leftText + delimiter + rightText;
   };
+
+  watch(originalText, val => {
+    formattedText.value = val;
+  });
 
   onMounted(() => {
     if (htmlElementRef.value === null || isTextLengthAcceptable()) {
