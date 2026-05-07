@@ -20,10 +20,16 @@ export const useTextMiddleEllipsis = ({
   });
   const formattedText: Ref<string> = ref(originalText.value);
 
+  const computeTextPart = (part: 'left' | 'right') => {
+    return part === 'left'
+      ? originalText.value.slice(0, Math.trunc(originalText.value.length / 2))
+      : originalText.value.slice(Math.trunc(originalText.value.length / 2));
+  };
+
   let resizeObserver: ResizeObserver | undefined;
   let mutationObserver: MutationObserver | undefined;
-  let leftText = originalText.value.slice(0, Math.trunc(originalText.value.length / 2));
-  let rightText = originalText.value.slice(Math.trunc(originalText.value.length / 2));
+  let leftText = computeTextPart('left');
+  let rightText = computeTextPart('right');
   let currentWidth = Number(htmlElementRef.value?.offsetWidth ?? 0);
   let isDecreasing = true;
 
@@ -36,11 +42,11 @@ export const useTextMiddleEllipsis = ({
       return false;
     }
 
-    return htmlElementRef.value.offsetWidth < htmlElementRef.value.scrollWidth;
+    return !isTextLengthAcceptable() && htmlElementRef.value.offsetWidth < htmlElementRef.value.scrollWidth;
   };
 
   const isMinimalWidthReached = () => {
-    return leftText.length <= trimStep || rightText.length <= trimStep;
+    return isTextLengthAcceptable() || leftText.length <= trimStep || rightText.length <= trimStep;
   };
 
   const handleDecrease = () => {
@@ -71,12 +77,27 @@ export const useTextMiddleEllipsis = ({
     formattedText.value = leftText + delimiter + rightText;
   };
 
-  watch(originalText, val => {
+  const handleResize = () => {
+    if (isOverflow()) {
+      isDecreasing = true;
+      handleDecrease();
+
+      return;
+    }
+
+    if (!isDecreasing) {
+      handleIncrease();
+    }
+  };
+
+  watch(originalText, (val) => {
     formattedText.value = val;
+    leftText = computeTextPart('left');
+    rightText = computeTextPart('right');
   });
 
   onMounted(() => {
-    if (htmlElementRef.value === null || isTextLengthAcceptable()) {
+    if (htmlElementRef.value === null) {
       return;
     }
 
@@ -87,42 +108,15 @@ export const useTextMiddleEllipsis = ({
 
       isDecreasing = htmlElementRef.value.offsetWidth < currentWidth;
       currentWidth = htmlElementRef.value.offsetWidth;
-
-      if (isOverflow()) {
-        isDecreasing = true;
-        handleDecrease();
-
-        return;
-      }
-
-      if (!isDecreasing) {
-        handleIncrease();
-      }
+      handleResize();
     });
 
     resizeObserver.observe(htmlElementRef.value);
-
-    mutationObserver = new MutationObserver(() => {
-      if (isOverflow()) {
-        isDecreasing = true;
-        handleDecrease();
-
-        return;
-      }
-
-      if (!isDecreasing) {
-        handleIncrease();
-      }
-    });
-
+    mutationObserver = new MutationObserver(handleResize);
     mutationObserver.observe(htmlElementRef.value, { childList: true });
   });
 
   onUnmounted(() => {
-    if (isTextLengthAcceptable()) {
-      return;
-    }
-
     resizeObserver?.disconnect();
     mutationObserver?.disconnect();
   });
